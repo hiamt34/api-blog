@@ -1,0 +1,14 @@
+yarn init
+npx typescript --init
+yarn add express yup config cors express mongoose pino pino-pretty dayjs bcrypt jsonwebtoken lodash nanoid cors
+yarn add @types/body-parser @types/config @types/cors @types/express @types/node @types/yup @types/pino @types/bcrypt @types/jsonwebtoken @types/lodash @types/nanoid ts--node typescript -D
+
+mkdir src
+touch nodemon.json
+
+yarn add nodemailer
+yarn add @types/nodemailer -D
+
+yarn add multer
+yarn add @types/multer
+phai dung mongoose v 5.13.8
