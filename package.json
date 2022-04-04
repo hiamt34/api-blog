@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon --config nodemon.json src/app.ts",
     "watch": "tsc -w",
-    "start": "node --config nodemon.json src/app.ts"
+    "start": "npx ts-node src/app.ts"
   },
   "dependencies": {
     "@types/multer": "^1.4.7",
