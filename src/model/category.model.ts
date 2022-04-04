@@ -7,7 +7,7 @@ const CategorySchema = new mongoose.Schema(
         status: { type: String, ref: 'Category' }
     },
     {
-        timestamps: true
+        timestamps: true 
     }
 );
 

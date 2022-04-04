@@ -7,6 +7,7 @@ import { FilterQuery, QueryOptions, UpdateQuery } from "mongoose";
 class PostService<T> extends PatternService<T> {
 
     public getAllAndPaginate = async ({ limit, page }: IConfig, { title, tags, category, status }: IQuery) => {
+
         try {
             let query = {}
             if (title) {
@@ -33,6 +34,7 @@ class PostService<T> extends PatternService<T> {
                     status
                 }
             }
+
             const count = await this.model.countDocuments(query)
 
             const payload = await this.model.find(query)

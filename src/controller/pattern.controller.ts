@@ -31,7 +31,7 @@ export class PatternController<T> {
         try {
             const query = {
                 _id: req.params._id as string
-            } as FilterQuery<T>;
+            } as unknown as FilterQuery<T>;
 
             const data = await this.service.getDetail(query);
 
@@ -79,7 +79,7 @@ export class PatternController<T> {
 
             const query = {
                 _id: req.params._id as string
-            } as FilterQuery<T>;
+            } as unknown as FilterQuery<T>;
 
             const update = req.body;
             const data = await this.service.update(query, update);
@@ -101,7 +101,7 @@ export class PatternController<T> {
         try {
             const query = {
                 _id: req.params._id as string
-            } as FilterQuery<T>;
+            } as unknown as FilterQuery<T>;
 
             await this.service.destroy(query);
 

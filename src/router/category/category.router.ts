@@ -8,7 +8,7 @@ const CategoryRouter = (app: Express) => {
     app.use('/categories', route);
 
     //getAll
-    route.get('/', CategoryController.index);
+    route.get('/', CategoryController.indexV2);
 
     //getDetail
     route.get('/detail/:_id', CategoryController.show);
@@ -22,6 +22,8 @@ const CategoryRouter = (app: Express) => {
     //destroy
     route.delete('/destroy/:_id', verifyToken, validate(destroyCategorySchema), CategoryController.destroy);
 
+    //getAll
+    // route.get('/test', CategoryController.test);
 
 };
 

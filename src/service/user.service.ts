@@ -10,7 +10,7 @@ export class UserService extends PatternService<UserDocument> {
             const query = {
                 email: data.email as string
             } as FilterQuery<UserDocument>
-            const user = await User.findOne(query);
+            const user = await User.findOne(query); 
 
             if (user) {
                 return false;
