@@ -10,8 +10,8 @@ var connect_1 = __importDefault(require("./db/connect"));
 var router_1 = __importDefault(require("./router"));
 var cors_1 = __importDefault(require("cors"));
 require("dotenv/config");
-var port = process.env.PORT || 1998;
-var host = process.env.HOST;
+var port = config_1.default.get('port');
+var host = config_1.default.get('host');
 var allowedOrigins = ['http://localhost:3000', 'http://localhost:1998', 'http://localhost:8080'];
 var options = {
     origin: allowedOrigins

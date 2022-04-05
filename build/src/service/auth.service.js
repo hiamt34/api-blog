@@ -56,7 +56,7 @@ var AuthService = /** @class */ (function () {
             switch (_b.label) {
                 case 0:
                     _b.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, jsonwebtoken_1.default.verify(token, 'hiamt06')];
+                    return [4 /*yield*/, jsonwebtoken_1.default.verify(token, config_1.default.get('privateKey'))];
                 case 1:
                     user = _b.sent();
                     return [2 /*return*/, model_1.User.create(user)];
@@ -88,8 +88,8 @@ var AuthService = /** @class */ (function () {
                     }
                     ;
                     user = (0, lodash_1.pick)(user.toJSON(), 'email', 'status');
-                    accessToken = jsonwebtoken_1.default.sign(user, 'hiamt06', { expiresIn: '7d' });
-                    refreshToken = jsonwebtoken_1.default.sign(user, 'hiamt06', { expiresIn: '365d' });
+                    accessToken = jsonwebtoken_1.default.sign(user, config_1.default.get('privateKey'), { expiresIn: config_1.default.get('accessTokenLife') });
+                    refreshToken = jsonwebtoken_1.default.sign(user, config_1.default.get('privateKey'), { expiresIn: config_1.default.get('refreshTokenLife') });
                     return [4 /*yield*/, model_1.RefreshToken.updateOne({ email: user.email }, {
                             email: user.email,
                             refreshToken: refreshToken
@@ -125,15 +125,15 @@ var AuthService = /** @class */ (function () {
                                 _b.label = 1;
                             case 1:
                                 _b.trys.push([1, 4, , 5]);
-                                user = jsonwebtoken_1.default.verify(refreshToken, 'hiamt06');
+                                user = jsonwebtoken_1.default.verify(refreshToken, config_1.default.get('privateKey'));
                                 return [4 /*yield*/, model_1.RefreshToken.findOne({ email: user.email, refreshToken: refreshToken })];
                             case 2:
                                 check = _b.sent();
                                 if (!check)
                                     return [2 /*return*/, resolve(false)];
                                 user = (0, lodash_1.pick)(user, 'email', 'status');
-                                accessTokenNew = jsonwebtoken_1.default.sign(user, 'hiamt06', { expiresIn: '7d' });
-                                refreshTokenNew = jsonwebtoken_1.default.sign(user, 'hiamt06', { expiresIn: '365d' });
+                                accessTokenNew = jsonwebtoken_1.default.sign(user, config_1.default.get('privateKey'), { expiresIn: config_1.default.get('accessTokenLife') });
+                                refreshTokenNew = jsonwebtoken_1.default.sign(user, config_1.default.get('privateKey'), { expiresIn: config_1.default.get('refreshTokenLife') });
                                 return [4 /*yield*/, model_1.RefreshToken.updateOne({ email: user.email }, {
                                         email: user.email,
                                         refreshToken: refreshTokenNew

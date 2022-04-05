@@ -14,15 +14,15 @@ var mailerService = function (_a) {
     var transporter = nodemailer_1.default.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'codetoanbug06@gmail.com',
-            pass: 'havit123'
+            user: config_1.default.get('auth.user'),
+            pass: config_1.default.get('auth.pass')
         }
     });
     var mailOptions = {
-        from: 'codetoanbug06@gmail.com',
+        from: config_1.default.get('auth.user'),
         to: emailUser,
         subject: 'Active account',
-        html: "<h1><a href=\"http://" + process.env.HOST + ":" + process.env.PORT + "/auth/signin/" + token + "\">Click to active account</a></h1>"
+        html: "<h1><a href=\"http://" + config_1.default.get('host') + ":" + config_1.default.get('port') + "/auth/signin/" + token + "\">Click to active account</a></h1>"
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -33,6 +33,6 @@ var mailerService = function (_a) {
 };
 exports.mailerService = mailerService;
 var createToken = function (dataSignin) {
-    return jsonwebtoken_1.default.sign(dataSignin, 'hiamt06');
+    return jsonwebtoken_1.default.sign(dataSignin, config_1.default.get('privateKey'));
 };
 exports.createToken = createToken;

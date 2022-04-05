@@ -7,7 +7,7 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var config_1 = __importDefault(require("config"));
 var logger_1 = __importDefault(require("../../logger"));
 var connect = function () {
-    var dbUri = 'mongodb://localhost:27017/api-instagram';
+    var dbUri = config_1.default.get("dbUri");
     var options = {
         useNewUrlParser: true,
         useCreateIndex: true,
